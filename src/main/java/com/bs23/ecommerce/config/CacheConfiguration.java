@@ -38,6 +38,14 @@ public class CacheConfiguration {
         return cm -> {
             createCache(cm, com.bs23.ecommerce.repository.UserRepository.USERS_BY_LOGIN_CACHE);
             createCache(cm, com.bs23.ecommerce.repository.UserRepository.USERS_BY_EMAIL_CACHE);
+            createCache(cm, com.bs23.ecommerce.domain.Address.class.getName());
+            createCache(cm, com.bs23.ecommerce.domain.Role.class.getName());
+            createCache(cm, com.bs23.ecommerce.domain.Order.class.getName());
+            createCache(cm, com.bs23.ecommerce.domain.Role.class.getName() + ".applicationUsers");
+            createCache(cm, com.bs23.ecommerce.domain.ApplicationUser.class.getName());
+            createCache(cm, com.bs23.ecommerce.domain.ApplicationUser.class.getName() + ".addresses");
+            createCache(cm, com.bs23.ecommerce.domain.ApplicationUser.class.getName() + ".roles");
+            createCache(cm, com.bs23.ecommerce.domain.ApplicationUser.class.getName() + ".orders");
             // jhipster-needle-ehcache-add-entry
         };
     }

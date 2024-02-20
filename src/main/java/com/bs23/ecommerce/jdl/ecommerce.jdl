@@ -1,0 +1,45 @@
+application {
+    config {
+        baseName ecommerce
+        applicationType monolith
+        packageName com.bs23
+        authenticationType jwt
+        prodDatabaseType mysql
+    }
+    entities *
+}
+
+entity User {
+    id Integer,
+    firstName String required minlength(3) maxlength(20),
+    lastName String required minlength(3) maxlength(20),
+    username String required minlength(3) maxlength(20),
+    email String required
+}
+
+entity Address {
+    id Integer,
+    details String required minlength(3) maxlength(20),
+    zipCode String required
+}
+
+entity Order {
+    id Integer,
+    totalAmount Double,
+    status String,
+    createdAt LocalDate
+}
+
+entity Role {
+    id Integer,
+    name String required minlength(3)
+}
+
+relationship OneToMany {
+    User{addresses} to Address
+    User{orders} to Order
+}
+
+relationship ManyToMany {
+    User{roles} to Role
+}
